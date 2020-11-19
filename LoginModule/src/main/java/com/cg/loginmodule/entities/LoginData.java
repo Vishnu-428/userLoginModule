@@ -1,19 +1,18 @@
 package com.cg.loginmodule.entities;
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-
+/*
+ * Entity class
+ * @author VishnuVardhan 
+ */
 @Entity
 @Table(name="LoginData")
 public class LoginData {
-	
 private String userId;
 private String password;
-private String type;
+private String userType;
 @Id
 public String getUserId() {
 	return userId;
@@ -30,20 +29,20 @@ public void setPassword(String password) {
 }
 @Column(name = "type", nullable = false)
 public String getType() {
-	return type;
+	return userType;
 }
 public void setType(String type) {
-	this.type = type;
+	this.userType = type;
 }
 @Override
 public String toString() {
-	return "LoginData [userId=" + userId + ", password=" + password + ", type=" + type + "]";
+	return "LoginData [userId=" + userId + ", password=" + password + ", type=" + userType + "]";
 }
 public LoginData(String userId, String password, String type) {
 	super();
 	this.userId = userId;
 	this.password = password;
-	this.type = type;
+	this.userType = type;
 }
 public LoginData() {
 	super();

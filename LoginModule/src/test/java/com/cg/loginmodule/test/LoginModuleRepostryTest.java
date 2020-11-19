@@ -9,6 +9,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.cg.loginmodule.entities.LoginData;
 import com.cg.loginmodule.exceptions.ResourceNotFoundException;
 import com.cg.loginmodule.repostry.LoginRepostry;
+/*
+ * This LoginModuleRepostryTest for testing RepostryLayer
+ * @author VishnuVardhan
+ */
 @RunWith(SpringRunner.class)
 @DataJpaTest
 class LoginModuleRepostryTest {
@@ -17,9 +21,10 @@ class LoginModuleRepostryTest {
 
 	@Autowired
 	private TestEntityManager test;
-
+    
+	//This validateUserData for checking for userData
 	@Test
-	void validateData() throws ResourceNotFoundException
+	void validateUserData() throws ResourceNotFoundException
 	{
 		boolean flag=false;
 		LoginData data=new LoginData();

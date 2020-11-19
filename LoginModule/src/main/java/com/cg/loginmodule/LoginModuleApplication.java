@@ -1,12 +1,14 @@
 package com.cg.loginmodule;
-
 import org.apache.log4j.BasicConfigurator;
 import org.jboss.logging.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.cg.loginmodule.entities.LoginData;
-
+/* SpringBootApplication
+ * 
+ * @author VishnuVardhan
+ * 
+ */
 @SpringBootApplication
 public class LoginModuleApplication {
 
@@ -17,5 +19,4 @@ public class LoginModuleApplication {
 		logger.info("Open");
 		
 	}
-
 }
