@@ -1,20 +1,25 @@
 package com.cg.loginmodule.exceptions;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+/*
+ * This method for Validating userId,Password
+ * @author VishnuVardhan
+ */
 public class UserValidate {
-public boolean validateUser(String user)
+	
+//This method for checking userId on regex
+public boolean validateUser(String userId)
 {
 	String regex = "^[A-Za-z]\\w{5,29}$"; 
     Pattern p = Pattern.compile(regex); 
-    if (user == null) { 
+    if (userId == null) { 
         return false; 
     } 
-    Matcher m = p.matcher(user); 
+    Matcher m = p.matcher(userId); 
     return m.matches();
 	
 }
+//This method for checking Password on regex
 public boolean validatePassword(String password)
 {
 	 String regex = "^(?=.*[0-9])"
