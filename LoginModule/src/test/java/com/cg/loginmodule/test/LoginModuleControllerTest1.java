@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import com.cg.loginmodule.controller.LoginModuleController;
 import com.cg.loginmodule.entities.LoginData;
-import com.cg.loginmodule.service.LoginModuleServiceImpl;
+import com.cg.loginmodule.service.LoginModuleService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 /*
@@ -27,7 +27,7 @@ class LoginModuleControllerTest1 {
 	 @Autowired
 	   private MockMvc mockMvc;
 	 @MockBean
-	 private LoginModuleServiceImpl service;
+	 private LoginModuleService service;
 	
 	//This testValidateUser method for validate user
 	@Test

@@ -25,7 +25,7 @@ class LoginModuleServiceTest {
 	    
 // This method for checking userDetails	    
 	@Test
-	void ValidateUserData() {
+	void validateUserData() {
 		LoginData data=new LoginData();
 		data.setUserId("1");
 		data.setPassword("vishnu");

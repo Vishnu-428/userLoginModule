@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.cg.loginmodule.entities.LoginData;
 import com.cg.loginmodule.exceptions.ResourceNotFoundException;
+import com.cg.loginmodule.exceptions.UserValidate;
 import com.cg.loginmodule.service.LoginModuleService;
 /*
  * This Controller for testing in postman
@@ -19,27 +20,37 @@ import com.cg.loginmodule.service.LoginModuleService;
 @RequestMapping("/validate")
 public class LoginModuleController {
 	static LoginData data;
-	Logger logger=Logger.getLogger(LoginModuleController.class);
+	
 	@Autowired
 	private LoginModuleService service;
 	
 	/*
-	 * This get Method for checking userid,password,type
+	 * This get Method for checking userId,password,userType
 	 */
 	@GetMapping("/Login1/{userId}/{password}/{type}")
 	public ResponseEntity<String> validateUser(@PathVariable(value = "userId") String userId,@PathVariable(value="password") String password,@PathVariable(value="type") String type)
 			throws ResourceNotFoundException {
 		
+		UserValidate validate=new UserValidate();
+		boolean userValidate=validate.validateUser(userId); //validating userId;
+		boolean passwordValidate=validate.validatePassword(password); //validating password
+		if(userValidate )
+		{
+			if(passwordValidate)
+			{
 		Logger logger=Logger.getLogger(LoginData.class);
 			data =  service.findByID(userId);
+			System.out.println(data);
 			logger.info("ending services");
+			logger.debug("running");
 					//.orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + userId));
 			if(data!=null)
 			{
 			if(data.getPassword().equals(password) && data.getUserId().equals(userId) && data.getType().equals(type))
 			{
 				logger.info("sucess");
-				System.out.println("sucess");
+				
+				
 				
 				return ResponseEntity.ok().body("sucess login");
 			}
@@ -49,6 +60,14 @@ public class LoginModuleController {
 				}
 		
 		return ResponseEntity.ok().body("invalid login");
-	}	
+	}else
+	{
+	return ResponseEntity.ok().body("invalid Password Must contain atleast one special character");
+	}
+		}
+		else
+		{
+		return ResponseEntity.ok().body("invalid userId Enter Valid userId ");
+		}
 }
-	
+}
