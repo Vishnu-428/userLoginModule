@@ -32,14 +32,14 @@ class LoginModuleControllerTest1 {
 	//This testValidateUser method for validate user
 	@Test
 	void testValidateUser() throws Exception {
-		 String URI= "/validate/Login1/{userId}/{password}/{type}";
+		final String uri= "/validate/Login1/{userId}/{password}/{type}";
 	        LoginData data=new LoginData();
-	        data.setUserId("1");
-	        data.setPassword("vishnu");
+	        data.setUserId("ViShNu");
+	        data.setPassword("Vi@sh@nu25");
 	        data.setType("manager");
 	        String jsonInput = this.converttoJson(data);
 	        Mockito.when(service.findByID((String) (Mockito.any()))).thenReturn(data);
-	        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(URI,"1","vishnu","manager").accept(MediaType.APPLICATION_JSON)).andReturn();
+	        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get(uri,"ViShNu","Vi@sh@nu25","manager").accept(MediaType.APPLICATION_JSON)).andReturn();
 	        MockHttpServletResponse mockHttpServletResponse = mvcResult.getResponse();
 	        String jsonOutput = mockHttpServletResponse.getContentAsString();
             assertThat("sucess login").isEqualTo(jsonOutput);

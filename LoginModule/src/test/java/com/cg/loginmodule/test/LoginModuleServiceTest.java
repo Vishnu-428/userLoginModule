@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import com.cg.loginmodule.entities.LoginData;
+import com.cg.loginmodule.exceptions.ResourceNotFoundException;
 import com.cg.loginmodule.repostry.LoginRepostry;
 import com.cg.loginmodule.service.LoginModuleServiceImpl;
 /*
@@ -25,7 +26,8 @@ class LoginModuleServiceTest {
 	    
 // This method for checking userDetails	    
 	@Test
-	void validateUserData() {
+	 void validateUserData() throws ResourceNotFoundException
+	{
 		LoginData data=new LoginData();
 		data.setUserId("1");
 		data.setPassword("vishnu");

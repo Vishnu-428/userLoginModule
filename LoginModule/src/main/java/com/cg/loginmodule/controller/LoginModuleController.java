@@ -19,7 +19,8 @@ import com.cg.loginmodule.service.LoginModuleService;
 @RestController
 @RequestMapping("/validate")
 public class LoginModuleController {
-	static LoginData data;
+	// creating varible
+private	static LoginData data; //static data
 	
 	@Autowired
 	private LoginModuleService service;
@@ -33,14 +34,14 @@ public class LoginModuleController {
 		
 		UserValidate validate=new UserValidate();
 		boolean userValidate=validate.validateUser(userId); //validating userId;
-		boolean passwordValidate=validate.validatePassword(password); //validating password
+		boolean passwordValidate=validate.validatePassword(password,userId); //validating password
 		if(userValidate )
 		{
 			if(passwordValidate)
 			{
 		Logger logger=Logger.getLogger(LoginData.class);
 			data =  service.findByID(userId);
-			System.out.println(data);
+			//System.out.println(data);
 			logger.info("ending services");
 			logger.debug("running");
 					//.orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + userId));
@@ -62,12 +63,18 @@ public class LoginModuleController {
 		return ResponseEntity.ok().body("invalid login");
 	}else
 	{
+		if(password.substring(0,6).equals(userId.subSequence(0,6)))
+		{
+			return ResponseEntity.ok().body("invalid user Id do not match with userName ");
+		}
+		else
 	return ResponseEntity.ok().body("invalid Password Must contain atleast one special character");
 	}
 		}
 		else
 		{
-		return ResponseEntity.ok().body("invalid userId Enter Valid userId ");
+			
+		return ResponseEntity.ok().body("invalid userId Enter Valid userId 7 ");
 		}
 }
 }

@@ -38,12 +38,7 @@ public void setType(String type) {
 public String toString() {
 	return "LoginData [userId=" + userId + ", password=" + password + ", type=" + userType + "]";
 }
-public LoginData(String userId, String password, String type) {
-	super();
-	this.userId = userId;
-	this.password = password;
-	this.userType = type;
-}
+
 public LoginData() {
 	super();
 	// TODO Auto-generated constructor stub
